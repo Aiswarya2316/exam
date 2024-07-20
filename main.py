@@ -1,6 +1,6 @@
 import calculator
 
-def main():
+def main():                                               
     print("Select operation:")
     print("1. Add")
     print("2. Subtract")
