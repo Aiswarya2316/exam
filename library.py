@@ -1,3 +1,5 @@
+from tabulate import tabulate
+
 class Library:
     def __init__(self):
         self.books = [
@@ -40,8 +42,9 @@ class Library:
         if not self.books:
             print("No books available.")
             return
-        for book in self.books:
-            print(book)
+        headers = ["ID", "Title", "Author", "Year"]
+        table = [[book['id'], book['title'], book['author'], book['year']] for book in self.books]
+        print(tabulate(table, headers=headers, tablefmt='grid'))
 
     def register_user(self, username, password):
         if username in self.users:
@@ -52,7 +55,7 @@ class Library:
 
     def login_user(self, username, password):
         if self.users.get(username) == password:
-            print("Successfully login!")
+            print("Successfully logged in!")
             return True
         else:
             print("Invalid username or password!")
